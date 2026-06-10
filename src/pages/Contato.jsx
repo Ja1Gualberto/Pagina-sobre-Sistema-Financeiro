@@ -2,8 +2,11 @@ import React from 'react';
 import Form from '../components/Form';
 import { Box, Typography, Container } from '@mui/material';
 
+// Componente da página de Contato ("Fale Conosco")
 const Contato = () => {
   return (
+    // Box principal (Wrapper) que ocupa grande parte da tela, centraliza o conteúdo e 
+    // configura a imagem de fundo com um efeito escurecido (overlay)
     <Box
       sx={{
     	minHeight: '89vh',
@@ -21,6 +24,7 @@ const Contato = () => {
         backgroundAttachment: { xs: 'scroll', md: 'fixed' },
       }}
     >
+      {/* Seção de textos de cabeçalho agrupando o título e as instruções para o usuário */}
       <Container maxWidth="md" sx={{ mb: 4, textAlign: 'center', px: 2 }}>
         <Typography 
           variant="h3" 
@@ -44,6 +48,7 @@ const Contato = () => {
         </Typography>
       </Container>
       
+      {/* Renderiza o componente "Form" com os campos de entrada e envio para o WhatsApp */}
       <Form />
     </Box>
   );

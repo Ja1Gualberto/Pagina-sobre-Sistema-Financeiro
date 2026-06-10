@@ -3,16 +3,19 @@ import { TextField, Box, Typography, Stack, Paper } from '@mui/material';
 import WhatsappButton from './WhatsappButton';
 
 const Form = () => {
+  // Estado para armazenar os dados preenchidos no formulário
   const [formData, setFormData] = useState({
     nome: '',
     email: '',
     mensagem: ''
   });
 
+  // Estado para controle de erros de validação (ex: e-mail inválido)
   const [errors, setErrors] = useState({
     email: false
   });
 
+  // Função responsável por atualizar o estado 'formData' conforme o usuário digita nos campos
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -23,16 +26,19 @@ const Form = () => {
     }
   };
 
+  // Função que valida o formato do e-mail usando uma expressão regular (Regex)
   const validateEmail = (email) => {
     // Regex simples para validação de e-mail
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
   };
 
+  // Verifica se o formulário inteiro é válido (se tem nome, e-mail correto e mensagem)
   const isFormValid = formData.nome.trim() !== '' && 
                       validateEmail(formData.email) && 
                       formData.mensagem.trim() !== '';
 
+  // Função acionada quando o campo de e-mail perde o foco (onBlur), ativando o aviso de erro visual se for inválido
   const handleValidation = () => {
     if (formData.email && !validateEmail(formData.email)) {
       setErrors((prev) => ({ ...prev, email: true }));
